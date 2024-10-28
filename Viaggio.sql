@@ -45,3 +45,27 @@ SELECT avg(Costo) AS CostoViaggiPrenotati FROM Viaggio
 INNER JOIN Prenotazione ON Viaggio.id_Viaggio = Prenotazione.id_Viaggio
 INNER JOIN Turista ON Prenotazione.id_Turista = Turista.id_Turista
 ;
+-- 9 
+SELECT  Nome, Cognome, sum(costo)  AS CostoTotaleViaggi FROM Viaggio
+INNER JOIN Prenotazione ON Viaggio.id_Viaggio = Prenotazione.id_Viaggio
+INNER JOIN Turista ON Prenotazione.id_Turista = Turista.id_Turista
+Group By Nome
+;
+-- 10 
+SELECT  Nome, Cognome, count(Id_Prenotazione) FROM Viaggio
+INNER JOIN Prenotazione ON Viaggio.id_Viaggio = Prenotazione.id_Viaggio
+INNER JOIN Turista ON Prenotazione.id_Turista = Turista.id_Turista
+Group By Nome
+;
+-- 11
+SELECT Viaggio.id_Viaggio, count(Turista.id_Turista) AS QuantitàTuristi FROM Viaggio
+INNER JOIN Prenotazione ON Viaggio.id_Viaggio = Prenotazione.id_Viaggio
+INNER JOIN Turista ON Prenotazione.id_Turista = Turista.id_Turista
+Group By localita
+;
+-- 12
+SELECT  localita, count(Id_Prenotazione) AS QuantitàTotaleDiPrenotazioni FROM Viaggio
+INNER JOIN Prenotazione ON Viaggio.id_Viaggio = Prenotazione.id_Viaggio
+INNER JOIN Turista ON Prenotazione.id_Turista = Turista.id_Turista
+Group By localita
+;
